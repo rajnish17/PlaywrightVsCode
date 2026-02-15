@@ -1,4 +1,4 @@
-const {test} = require ('@playwright/test');
+const {test, expect} = require ('@playwright/test');
 
 
 
@@ -36,6 +36,46 @@ test('Client App', async ({browser}) =>
 
        }
     }
-    await page.pause();
+    
+
+    //PAGE 2
+
+    await page.locator("[routerlink*='cart']").click();
+    await page.locator("div li").first().waitFor();
+    const bool = await page.locator("h3:has-text('ZARA COAT 3')").isVisible();
+    expect(bool).toBeTruthy();
+
+    //PAGE 3
+    await page.locator("text=Checkout").click();
+    await page.locator("[placeholder='Select Country']").pressSequentially("ind");
+    const dropdown = await page.locator(".ta-results").first();
+    await dropdown.waitFor();
+    const optionsCount = await dropdown.locator("button").count();
+
+    for (let i=0; i<optionsCount; ++i)
+    {
+        const text = await dropdown.locator("button").nth(i).textContent();
+
+        if (text === " India")
+        {
+            await dropdown.locator("button").nth(i).click();
+            break;
+        }
+        await page.pause();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 })
