@@ -9,6 +9,8 @@ test.only('E2E practice Page1', async ({browser}) =>
     const page = await context.newPage();
     const products = await page.locator(".card-body");
     const productName = 'ZARA COAT 3';
+    const email = await page.locator(".user__name [type='text']").first();
+
 
 
     //PAGE 1
@@ -44,22 +46,74 @@ test.only('E2E practice Page1', async ({browser}) =>
 
     //PAGE3
     await page.locator("text = Checkout").click();
-    await page.locator("input[placeholder='Select Country']").pressSequentially("ind");
-    await page.locator(".ta-results").first();
-    
-    const optionsCount = page.locator("button").count();
+    await page.locator("[placeholder*='Country']").pressSequentially("ind");
+    await page.locator(".ta-results").first().waitFor();
+    const dropdown = await page.locator("[type='button']");
+    const optionscount = await dropdown.count();
+    console.log(optionscount);
 
-    for ( let i=0; i<optionsCount; ++i)
+    for (let i=0; i<optionscount; ++i)
     {
-
-        const text = await page.locator("button").nth(i).textContent();
-        if (text == India)
+        
+        if (await page.locator("[type='button']").nth(i).textContent() ===  ' India')
         {
-            await page.locator("button").nth(i).click();
+
+            await page.locator("[type='button']").nth(i).click();
             break;
+            
         }
 
     }
-    await page.pause();
+
+    expect (email).toHaveText("rajnishdt@gmail.com");
+    await page.locator(".field .text-validated").fill(" ");
+    await page.locator(".field .text-validated").fill("1234 5678 1234 5678");
+    const expiryMonth = await page.locator("div [class*=ddl]").first();
+    await expiryMonth.selectOption("07");
+    const expiryYear = await page.locator("div [class*=ddl]").last();
+    await expiryYear.selectOption("20");
+    await page.locator("div [class='input txt']").nth(0).fill("123");
+    await page.locator("div [class='input txt']").nth(1).fill("Rajneesh");
+    await page.locator("div [name='coupon']").fill("rahulshettyacademy");
+    await page.locator("div [type='submit']").click();
+    await page.locator("text= * Coupon Applied").waitFor();
+    await page.locator(".action__submit").click();
+
+
+    //PAGE4
+    await expect(page.locator(".hero-primary")).toHaveText(" Thankyou for the order. ");
+    const orderId = await page.locator(".em-spacer-1 .ng-star-inserted").textContent();
+    console.log(orderId);
+    await page.locator(".em-spacer-1 [routerlink*='myorders']").click();
+    await page.locator(".table-bordered").waitFor();
+    const table = await page.locator("tbody tr");
+    const tableCount = await table.count();
+
+    for (let i=0; i<tableCount; ++i)
+    {
+        const rowOrderId = await table.nth(i).locator("th").textContent()
+        if (orderId.includes(rowOrderId))
+        {
+            await table.nth(i).locator("button").first().click();
+            break;
+        }
+    }
+    const orderIdDetails = await page.locator(".col-text").first().textContent();
+    console.log(orderIdDetails);
+    expect(orderId.includes(orderIdDetails)).toBeTruthy();
+
+
+
+
+    
+    
+
+
+
+
+
+
+    
+
 
 })
