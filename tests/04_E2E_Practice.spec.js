@@ -8,7 +8,7 @@ test('E2E with Iphone13 pro', async ({browser}) =>
     const context = await browser.newContext();
     const page = await context.newPage();
 
-    const products = await page.locator(".card-body");
+    const products = page.locator(".card-body");
 
 
     //PAGE1
@@ -62,7 +62,64 @@ test('E2E with Iphone13 pro', async ({browser}) =>
         }
 
     }
+
+    const email = page.locator(".user__name [type='text']").first();
+    console.log(email.textContent);
+    await expect (email).toHaveText("rajnishdt@gmail.com");
+    await page.locator(".field .text-validated").fill(" ");
+    await page.locator(".field .text-validated").fill("1234 5678 1234 5678");
+    await page.locator(".row .ddl").first().selectOption("07");
+    await page.locator(".row .ddl").last().selectOption("31");
+    await page.locator("div [class='input txt']").first().fill("123");
+    await page.locator("div [class='input txt']").last().fill("Rajneesh");
+    await page.locator("div [name='coupon']").fill("rahulshettyacademy");
+    await page.locator(".field  .mt-1").first().waitFor();
+    await page.locator(".action__submit").click();
+
+
+    //PAGE4
+    await expect (page.locator(".hero-primary")).toBeVisible();
+    const orderId= await page.locator ("td tr label.ng-star-inserted").textContent();
+    console.log(orderId);
+    await expect (orderId).toBeTruthy();
+    await page.locator("li [routerlink*='myorders']").click();
+    await page.locator(".table-bordered").waitFor();
+
+    const row = await page.locator("tbody tr");
+    const rowCount = await row.count();
+
+    for (let i=0; i<rowCount; ++i)
+    {
+
+        const rowOrderId = await row.nth(i).locator("th").textContent();
+        if(orderId.includes(rowOrderId))
+        {
+            await row.nth(i).locator("button").first().click();
+            break;
+        }
+    }
+
+    //PAGE5
+    const orderIdDetailsFinal = await page.locator("div [class*='col-text']").textContent();
+    console.log(orderIdDetailsFinal);
+    expect(orderId.includes(orderIdDetailsFinal)).toBeTruthy();
     await page.pause();
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
 
 
 

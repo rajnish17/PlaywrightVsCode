@@ -1,7 +1,7 @@
 const {test, expect} =require ('@playwright/test');
 
 
-test('Day3Practice', async ({browser}) =>
+test.only('Day3Practice', async ({browser}) =>
 {
 
     const context = await browser.newContext();

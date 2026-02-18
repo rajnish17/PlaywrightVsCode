@@ -1,7 +1,7 @@
 const {test, expect} = require ('@playwright/test')
 
 
-test.only('E2E practice Page1', async ({browser}) =>
+test('E2E practice Page1', async ({browser}) =>
 {
 
 
@@ -86,6 +86,7 @@ test.only('E2E practice Page1', async ({browser}) =>
     console.log(orderId);
     await page.locator(".em-spacer-1 [routerlink*='myorders']").click();
     await page.locator(".table-bordered").waitFor();
+    
     const table = await page.locator("tbody tr");
     const tableCount = await table.count();
 
@@ -98,9 +99,12 @@ test.only('E2E practice Page1', async ({browser}) =>
             break;
         }
     }
+
+    //PAGE 5
     const orderIdDetails = await page.locator(".col-text").first().textContent();
     console.log(orderIdDetails);
     expect(orderId.includes(orderIdDetails)).toBeTruthy();
+    await page.pause();
 
 
 
