@@ -2,7 +2,7 @@ const {test} = require ('@playwright/test');
 
 
 
-test.only('Speciallocator practice', async({browser}) =>
+test('Speciallocator practice', async({browser}) =>
 {
 
     const context = await browser.newContext();
