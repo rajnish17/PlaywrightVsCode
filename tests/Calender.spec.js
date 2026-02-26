@@ -1,7 +1,7 @@
 const {test, expect} = require('@playwright/test')
 
 
-test.only('Calender validations', async ({browser}) =>
+test('Calender validations', async ({browser}) =>
 {
 
     const context = await browser.newContext();
