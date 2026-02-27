@@ -1,7 +1,7 @@
 const {test, expect} = require ('@playwright/test');
 
 
-test.only("E2E with Special locators", async({browser}) =>
+test("E2E with Special locators", async({browser}) =>
 
     {
         const context = await browser.newContext();
@@ -43,6 +43,14 @@ test.only("E2E with Special locators", async({browser}) =>
 
         //PAGE5
         await expect(page.getByText("ZARA COAT 3")).toBeVisible();
+        const orderId = await page.locator("tr td label.ng-star-inserted").textContent();
+        await page.getByText("Orders History Page").click();
+
+
+        //PAGE6
+        await page.waitForLoadState("networkidle");
+        await page.locator(".table-bordered").waitFor();
+        // await page.locator("tbody tr").filter({hasText : orderId }).getByRole("button", {name : "View"}).click();
         await page.pause();
 
 
