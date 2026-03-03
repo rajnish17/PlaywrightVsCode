@@ -26,22 +26,5 @@ test.only("Frames Practice", async ({browser}) =>
     console.log(text.split(" ")[1]);
 
 
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-    })
+})
 
