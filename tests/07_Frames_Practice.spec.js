@@ -1,7 +1,7 @@
 const {test, expect} = require ('@playwright/test');
 
 
-test.only("Frames Practice", async ({browser}) =>
+test("Frames Practice", async ({browser}) =>
 {
 
     const context = await browser.newContext();
