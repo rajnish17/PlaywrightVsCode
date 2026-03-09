@@ -36,7 +36,7 @@ test.beforeAll(async ()=>
 
 });
 
-test.only('WebAPIPart1', async ({browser}) =>
+test('WebAPIPart1', async ({browser}) =>
 {
 
     const context = await browser.newContext();
