@@ -1,35 +1,37 @@
-console.log("Hello world");
+console.log("Hello world")
 
-let a = 5;
+let a = 4;
 console.log(a);
 console.log(typeof(a));
 
-console.log("------------------------------");
+console.log("**************************************")
 
-let b = 25.658;
+let b = 25.65;
 console.log(b);
 console.log(typeof(b));
 
-console.log("------------------------------");
+console.log("**************************************")
 
-var c = "Rajnish";
+const c = "Rajnish";
 console.log(c);
 console.log(typeof(c));
+// if dont want to change the variable agaibn ever, then use 'const' keyword
 
-console.log("------------------------------");
+console.log("**************************************")
 
-let d = false;
+let d = true;
 console.log(d);
 console.log(typeof(d));
 
-console.log("------------------------------");
+console.log("**************************************")
 
-c = a+b;
-console.log(c)
-// we can redeclare & reassign var keywrod
-// we can reassign but not redeclare let keyword
-// we can not redeclare & reassign const keyword
+c = a + b;
+console.log(c);
+// we can not redeclare variable with let keyword but can reassign
+//e.g let c = "rajnish" and then c = a +b -->> this is allowed with let
 
-console.log("------------------------------");
+// we can redeclare and reassign with 'var' keyword
+//e,g, var c = "rajnish" and then var c = a+b OR c = a+b -->> both allowed with var
 
 console.log(!d)
+//negative operator to reverse the boolean condition
