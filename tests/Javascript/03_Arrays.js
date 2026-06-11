@@ -166,4 +166,3 @@ console.log(scores1.sort((a,b) => a-b));
 
 // How to do sorting of numbers in reverse order
 console.log(scores1.sort((a,b) => b-a));
-
