@@ -20,7 +20,7 @@ let sumOfNumbers = (c,d) => c+d
 console.log(sumOfNumbers(8,9))
 
 
-
+console.log("****************************************************")
 
 
 /// Function code practice

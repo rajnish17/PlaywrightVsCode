@@ -26,6 +26,7 @@ let greet1 = "Evening"  // this can be accesses as its global level
 greet1 = "night"  // both let&var can be reinitialised
 if (1==1)
 {
+    
     let greet1 = "Afternoon" // This will not be accesses as its in block level
 }
 
