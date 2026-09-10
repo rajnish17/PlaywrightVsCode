@@ -31,7 +31,7 @@ console.log(c);
 //e.g let c = "rajnish" and then c = a +b -->> this is allowed with let
 
 // we can redeclare and reassign with 'var' keyword
-//e,g, var c = "rajnish" and then var c = a+b OR c = a+b -->> both allowed with var
+//e.g var c = "rajnish" and then var c = a+b OR c = a+b -->> both allowed with var
 
 console.log(!d)
 //negative operator to reverse the boolean condition
