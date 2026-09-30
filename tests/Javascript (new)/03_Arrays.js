@@ -46,3 +46,42 @@ for (i=0; i<marks.length; i++)
     sum = sum + marks[i]
 }
 console.log(sum)
+
+let fruits = ["Banana", "Apple", "Orange"]
+for (i=0; i<fruits.length; i++)
+{
+    console.log(fruits[i])
+}
+
+let sum1 = 0;
+for (i=0; i<marks.length; i++)
+{
+    sum1 = sum1 + i
+}
+console.log(sum)
+
+// Total sum using reduce
+let total = marks.reduce((sum,mark) => sum+mark,0)
+console.log(total)
+
+// Total multiplication using reduce
+let total1 = marks.reduce((mult,mark) => mult*mark,1)
+console.log(total1)
+
+//Old way
+var scores =[10,20,35,46,55,60]
+for(i=0; i<scores.length; i++)
+{
+    if (scores[i] % 2 ==0)
+    {
+        console.log(scores[i])
+    }
+}
+
+//using filter logic divisible by 2
+let newFilter = scores.filter(score=>score%2 ==0)
+console.log(newFilter)
+
+// using filter logic divisible by 3
+let newFilter1 = scores.filter(score=> score%3 ==0)
+console.log(newFilter1)
