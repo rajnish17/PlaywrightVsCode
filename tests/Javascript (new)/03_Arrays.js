@@ -85,3 +85,104 @@ console.log(newFilter)
 // using filter logic divisible by 3
 let newFilter1 = scores.filter(score=> score%3 ==0)
 console.log(newFilter1)
+
+
+
+// Task: Use reduce() to sum all three shipping fees into totalFee
+// accumulator starts at 0
+const shippingFees = [40, 25, 35];
+
+const totalFee = shippingFees.reduce((total, fee) => total+fee, 0);
+
+console.log("Total Delivery Charges:", totalFee);
+
+
+
+// Task: Use .filter() to get response times > 200
+const responseTimes = [120, 250, 95, 310, 180];
+
+const slowRequests = responseTimes.filter(time => time>200);
+
+console.log("Slow requests (>200ms):", slowRequests);
+
+// Task: Use .filter() to extract only even numbers
+const numbers = [12, 17, 24, 33, 40, 51];
+
+const evenNumbers = numbers.filter(num => num%2 ==0);
+
+console.log("Even numbers:", evenNumbers);
+
+// Use of map - mapping the newly created array to new value eg. multiply by 3
+let mappedArray = evenNumbers.map(num => num*3)
+console.log(mappedArray);
+let totalVal = mappedArray.reduce((sum,val) => sum+val,0)
+console.log(totalVal) //Create a new array with even number socre and multiply each value with 3
+// and sum the array
+
+
+
+// Create a new array with even number socre and multiply each value with 3 and sum the array
+// using chaining
+
+let scores1 = [10,25,30,45,75,92,65,99];
+
+let newtotal = scores1.filter(score => score%2 ===0).map(score=>score*3).reduce((sum,val) => sum+val,0)
+console.log(newtotal)
+
+// example
+const basePrices = [200, 450, 1000];
+
+// Task: Use .map() to subtract 50 from each price
+const discountedPrices = basePrices.map(price => price-50);
+
+console.log("Discounted Prices:", discountedPrices);
+// Expected output: [150, 400, 950]
+
+
+// Example
+const testNumbers = [101, 102, 103, 104];
+
+// Task: Use .map() to format each number as "TC_101", "TC_102", etc.
+const formattedTestIDs = testNumbers.map(id => 'TC_' + id);
+
+console.log("Formatted IDs:", formattedTestIDs);
+
+
+// Practice 1
+
+//You extracted an array of product prices from a shopping page. The business rules state:
+//Filter: Keep only products priced above ₹200 (ignoring cheap add-ons).
+//Map: Apply a flat 10% discount to each eligible item (multiply price by 0.9).
+//Reduce: Sum the discounted items to calculate the final checkout total.
+
+
+let rawPrices = [150, 500, 100, 1000, 300];
+
+let filterProduct = rawPrices.filter(product => product>200);
+console.log("Eligible Price =", filterProduct)
+
+let mapProduct = filterProduct.map(product=> product*0.9)
+console.log("Discounted Price =", mapProduct)
+
+let reduceProduct = mapProduct.reduce((sum,val) => sum+val,0)
+console.log("Final price =", reduceProduct)
+
+// Chaining into one
+let finalTotal = rawPrices.filter(product => product>200).map(product => product*0.9).reduce((sum,value) => sum+value,0);
+console.log("Finalprice =", finalTotal)
+
+// Pracrice 2:
+//Write a chained script using .filter(), .map(), and .reduce() that:
+//Converts each string into a pure number by removing '₹' and parsing it (Number(price.replace('₹', ''))).
+//Filters to keep only items greater than 100.
+//Sums all remaining items into a single final amount.
+
+const scrapedPrices = ["₹120", "₹550", "₹80", "₹1200", "₹450"];
+let finalPrice = scrapedPrices.map(Price => Number(Price.replace('₹', ''))).filter(Price => Price>100).reduce((sum,val) => sum+val,0);
+console.log(finalPrice)
+
+
+let tag = "$99";
+let cleanTag = Number(tag.replace('$', ''));
+
+console.log(cleanTag + 1)
