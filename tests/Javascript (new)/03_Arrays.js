@@ -121,7 +121,7 @@ console.log(totalVal) //Create a new array with even number socre and multiply e
 
 
 
-// Create a new array with even number socre and multiply each value with 3 and sum the array
+// Create a new array with even number score and multiply each value with 3 and sum the array
 // using chaining
 
 let scores1 = [10,25,30,45,75,92,65,99];
@@ -171,7 +171,7 @@ console.log("Final price =", reduceProduct)
 let finalTotal = rawPrices.filter(product => product>200).map(product => product*0.9).reduce((sum,value) => sum+value,0);
 console.log("Finalprice =", finalTotal)
 
-// Pracrice 2:
+// Practice 2:
 //Write a chained script using .filter(), .map(), and .reduce() that:
 //Converts each string into a pure number by removing '₹' and parsing it (Number(price.replace('₹', ''))).
 //Filters to keep only items greater than 100.
@@ -181,8 +181,46 @@ const scrapedPrices = ["₹120", "₹550", "₹80", "₹1200", "₹450"];
 let finalPrice = scrapedPrices.map(Price => Number(Price.replace('₹', ''))).filter(Price => Price>100).reduce((sum,val) => sum+val,0);
 console.log(finalPrice)
 
+// Use of sort
+let fruits1 = ["mango", "banana", "apple", "grrenapple"]
 
-let tag = "$99";
-let cleanTag = Number(tag.replace('$', ''));
+fruits1.sort();
+console.log(fruits1)
 
-console.log(cleanTag + 1)
+// To revers the order
+console.log(fruits1.reverse());
+
+
+
+// Normal way -- wont fix sorting of 005
+let scores2 = [18,98,005,32,65]
+console.log(scores2.sort())
+
+
+// Right way
+let scores3 = [15,25,60,007,35]
+console.log(scores3.sort((a,b) => a-b))
+
+
+// Practice - 1 (lower to higher order)
+let productPrices = [499, 120, 2499, 850, 99];
+
+// Task: Sort ascending (lowest price first)
+productPrices.sort((a, b) => a - b);
+
+console.log("Ascending prices:", productPrices);
+// Expected: [ 99, 120, 499, 850, 2499 ]
+
+
+
+// Practice 2 (Higer to lower order)
+let testDurations = [14, 3, 45, 8, 22];
+
+console.log(testDurations.sort((a,b) => b-a));
+
+// Practice 3 
+let browsers = ["Firefox", "Chrome", "Edge", "Safari"];
+
+browsers.sort();
+
+console.log("Number of browsers",browsers)
