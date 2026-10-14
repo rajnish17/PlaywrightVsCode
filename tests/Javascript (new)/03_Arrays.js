@@ -218,6 +218,10 @@ let testDurations = [14, 3, 45, 8, 22];
 
 console.log(testDurations.sort((a,b) => b-a));
 
+// Lower to higher
+
+console.log(testDurations.sort((a,b) => a-b))
+
 // Practice 3 
 let browsers = ["Firefox", "Chrome", "Edge", "Safari"];
 
