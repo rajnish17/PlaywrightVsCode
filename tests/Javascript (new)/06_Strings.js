@@ -16,6 +16,7 @@ console.log(splitDay[1].trim().length)
 let date = '28'
 let nextDate = '30'
 
+
 let diff = parseInt(nextDate) - parseInt(date); // To convert from string to number
 console.log(diff)
 
@@ -59,3 +60,24 @@ while (value !== -1) {
 }
 
 console.log("Total occurrences of 'day':", count); // 2
+
+// How to concanate two strings
+let day2 = "Monday"
+
+let newQuote = day2 + " is funday day"
+console.log(newQuote)
+
+// if want to search index of 'day' after monday
+let val = newQuote.indexOf("day",4)
+console.log(val)
+
+// If want to check how many times day occurance is there
+let value1 = newQuote.indexOf("a")
+let count1 = 0;
+
+while (value1!== -1)
+{
+    count1++;
+    value1 = newQuote.indexOf("a", value1+1)
+}
+console.log(count1)
